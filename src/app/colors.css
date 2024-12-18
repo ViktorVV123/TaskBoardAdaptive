@@ -1,0 +1,8 @@
+:root {
+    --primary-color: #4a90e2; /* Основной цвет */
+    --bar-color: #ffffff; /* Второстепенный цвет */
+    --background-color: #EEE; /* Цвет фона */
+    --text-color: #191919; /* Цвет текста */
+    --modal-bg-color: #ffffff; /* Цвет модального окна */
+    --overlay-color: rgba(0, 0, 0, 0.3); /* Цвет оверлея */
+}

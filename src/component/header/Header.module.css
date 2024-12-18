@@ -1,0 +1,100 @@
+.header {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Левый блок */
+.menu {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.menu:hover {
+    background-color: var(--background-color);
+    border-radius: 5px;
+}
+.menu img {
+    width: 32px; /* Гибкий размер иконки */
+    height: auto;
+}
+
+/* Центр: Input */
+.inputContainer {
+    flex: 1; /* Input занимает все доступное пространство по центру */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer input {
+    width: clamp(150px, 30vw, 400px); /* Резиновая ширина */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: var(--background-color);
+    transition: all 0.3s;
+}
+.inputContainer input:focus {
+    background-color: #ffffff;
+    outline: none; /* Убираем стандартное выделение браузера */
+    color: #333; /* Цвет текста */
+    border: 1px solid #4a90e2; /* Изменение цвета границы */
+
+}
+
+/* Правый блок */
+.account {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.account img {
+   width: 34px;
+    height: auto;
+}
+.iconTrio{
+    display: flex;
+    margin-left: 3px;
+}
+
+.p {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 16px;
+    background-image: linear-gradient(90deg, #000, #f2f2f4, #000);
+    background-repeat: no-repeat;
+    background-size: 450%;
+    animation: animate 1s linear forwards ; /*  бесконечная анимация  infinite*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 300%;
+    }
+    100% {
+        background-position: 0%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .p{
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .inputContainer {
+        display: none; /* Скрыть input */
+    }
+}

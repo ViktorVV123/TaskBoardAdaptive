@@ -1,0 +1,14 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll; /* Включаем прокрутку по вертикали */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
+}
+
+.App::-webkit-scrollbar {
+  display: none; /* Скрываем скроллбар в Chrome, Safari и других WebKit-браузерах */
+}
+
+

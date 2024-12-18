@@ -1,0 +1,54 @@
+.container {
+    position: fixed;
+    inset: 0;
+    background-color: var(--overlay-color); /* Полупрозрачный фон */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none; /* Чтобы нельзя было кликнуть по невидимому фону */
+}
+
+.container.active {
+    opacity: 1;
+    pointer-events: auto; /* Когда активно, можно кликать */
+}
+
+.modal {
+    width: clamp(250px, 16vw, 480px);
+    background: #ffffff;
+    border-radius: 8px;
+    height: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.modal.active {
+    transform: translateX(0);
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--overlay-color);
+}
+.paddingTitle {
+    padding: 20px;
+}
+.titleMenu {
+    margin: 0;
+    font-size: 18px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .titleMenu{
+        font-size: 15px;
+    }
+    .paddingTitle{
+        padding: 19px;
+    }
+}
+

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Создать каркас проекта",
+    "description": "Настроить React-приложение и подключить все нужные зависимости.",
+    "status": "To Do",
+    "priority": "High",
+    "assignedTo": "Иван Иванов",
+    "createdAt": "2024-06-01"
+  },
+  {
+    "id": 2,
+    "title": "Разработка компонентов доски",
+    "description": "Разработать колонки 'To Do', 'In Progress', 'Done'.",
+    "status": "In Progress",
+    "priority": "High",
+    "assignedTo": "Мария Петрова",
+    "createdAt": "2024-06-02"
+  },
+  {
+    "id": 3,
+    "title": "Реализовать Drag & Drop",
+    "description": "Добавить возможность перетаскивания задач между колонками.",
+    "status": "To Do",
+    "priority": "Medium",
+    "assignedTo": "Александр Кузнецов",
+    "createdAt": "2024-06-03"
+  },
+  {
+    "id": 4,
+    "title": "Подключить Mockaroo API",
+    "description": "Настроить получение данных задач из внешнего фейк-сервера.",
+    "status": "Done",
+    "priority": "Low",
+    "assignedTo": "Екатерина Смирнова",
+    "createdAt": "2024-06-01"
+  },
+  {
+    "id": 5,
+    "title": "Добавить фильтрацию задач",
+    "description": "Реализовать фильтрацию задач по статусу и приоритету.",
+    "status": "In Progress",
+    "priority": "High",
+    "assignedTo": "Иван Иванов",
+    "createdAt": "2024-06-04"
+  },
+  {
+    "id": 6,
+    "title": "Добавить возможность редактирования задачи",
+    "description": "Добавить функционал для изменения заголовка, описания и статуса задачи.",
+    "status": "To Do",
+    "priority": "Medium",
+    "assignedTo": "Мария Петрова",
+    "createdAt": "2024-06-05"
+  },
+  {
+    "id": 7,
+    "title": "Оптимизация интерфейса",
+    "description": "Добавить анимации и улучшить пользовательский интерфейс.",
+    "status": "To Do",
+    "priority": "Low",
+    "assignedTo": "Александр Кузнецов",
+    "createdAt": "2024-06-06"
+  },
+  {
+    "id": 8,
+    "title": "Добавить аутентификацию",
+    "description": "Настроить регистрацию и вход пользователя для доступа к задачам.",
+    "status": "To Do",
+    "priority": "High",
+    "assignedTo": "Екатерина Смирнова",
+    "createdAt": "2024-06-07"
+  }
+]
