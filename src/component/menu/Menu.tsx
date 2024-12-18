@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Menu.module.css';
+import add from '../../app/icons/add.svg'
+import board from '../../app/icons/board.svg'
 
 type MenuProps = {
     openMenu: boolean;
@@ -16,6 +18,9 @@ export const Menu: React.FC<MenuProps> = ({openMenu, closeMenuHandler}) => {
         e.stopPropagation();
     };
 
+
+
+
     return (
         <div
             className={`${styles.container} ${openMenu ? styles.active : ''}`}
@@ -26,9 +31,21 @@ export const Menu: React.FC<MenuProps> = ({openMenu, closeMenuHandler}) => {
                 onClick={handleModalClick}>
                 <div>
                     <div className={styles.paddingTitle}>
-                        <h3 className={styles.titleMenu}>Контент вашего меню</h3>
+                        <h3 className={styles.titleMenu}>TaskBoard</h3>
                     </div>
 
+                    <div className={styles.line}></div>
+
+                    <div className={styles.containerList}>
+                        <div style={{display: 'flex'}}>
+                            <img src={board} alt="board"/>
+                            <p style={{marginLeft: 10}}>MainBoard</p>
+                        </div>
+                        <div style={{display: 'flex'}}>
+                            <img src={add} alt="add"/>
+                            <p style={{marginLeft: 10}}>AddBoard</p>
+                        </div>
+                    </div>
                     <div className={styles.line}></div>
                 </div>
             </div>
