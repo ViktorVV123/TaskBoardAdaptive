@@ -6,4 +6,5 @@
     --modal-bg-color: #ffffff; /* Цвет модального окна */
     --overlay-color: rgba(0, 0, 0, 0.3); /* Цвет оверлея */
     --hover-task-color: rgb(234, 235, 237);/* Цвет hover в  */
+    --show-color-list: #f2f2f2
 }

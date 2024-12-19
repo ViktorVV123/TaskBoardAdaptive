@@ -3,6 +3,7 @@ import './App.css';
 import axios from "axios";
 import {Header} from "./component/header/Header";
 import {Main} from "./component/main/Main";
+import {Modal} from "./component/modal/Modal";
 
 export type taskType = {
     id: number;
@@ -38,7 +39,9 @@ function App() {
     return (
         <div className="App">
             <Header/>
-            <Main tasks={tasks} setTasks={setTasks} />
+            <Main tasks={tasks} setTasks={setTasks}/>
+
+
         </div>
     );
 }

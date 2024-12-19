@@ -25,7 +25,7 @@ export const Header = () => {
                 <img src={menu} alt="menu"/>
             </div>
                 <p className={styles.p}>
-                    Добавь Заметку
+                    Add a Note
                 </p>
             {/* Центр: input и settings */}
             <div className={styles.inputContainer}>

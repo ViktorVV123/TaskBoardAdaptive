@@ -1,0 +1,25 @@
+.dropdown {
+    position: absolute;
+    background: var(--bar-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    z-index: 1000;
+    padding: 8px 0;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menuItem {
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.menuItem:hover {
+    background: var(--show-color-list);
+}
