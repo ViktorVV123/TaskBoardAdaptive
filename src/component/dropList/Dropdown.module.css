@@ -14,12 +14,31 @@
 }
 
 .menuItem {
-    padding: 8px 16px;
+    padding: 8px 13px;
     cursor: pointer;
     font-size: 14px;
     color: #333;
+    display: flex;
+    justify-content: space-between; /* Иконка и текст будут по разным сторонам */
+    align-items: center;
 }
 
 .menuItem:hover {
     background: var(--show-color-list);
 }
+
+.iconWrapper {
+    width: 16px; /* Размер иконки */
+    height: 16px; /* Размер иконки */
+    margin-right: auto; /* Отправляет иконку в левую сторону */
+}
+
+.menuText {
+    margin-left: auto; /* Отправляет текст в правую сторону */
+    font-weight: 480;
+}
+.firstItem {
+    font-size: 16px; /* Увеличиваем шрифт */
+    font-weight: 500; /* Делаем текст жирным */
+}
+

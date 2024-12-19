@@ -5,6 +5,12 @@ import point from '../../app/icons/points.svg'
 import {taskType} from "../../App";
 import {AddIcon} from "../../app/icons/AddIcon";
 import {Dropdown} from "../dropList/Dropdown";
+import edit from '../../app/icons/edit.svg'
+import swap from '../../app/icons/swap_vert.svg'
+import deletes from '../../app/icons/delete.svg'
+import duplicate from '../../app/icons/dublicate.svg'
+
+import {v1} from "uuid";
 
 type Props = {
     tasks: taskType[]
@@ -21,11 +27,13 @@ export const Main = ({tasks, setTasks}: Props) => {
     const buttonRef = useRef<HTMLDivElement>(null);
 
     const items = [
-        {label: 'Custom order', onClick: () => console.log('Custom order')},
-        {label: 'Due date', onClick: () => console.log('Due date')},
-        {label: 'Alphabetical', onClick: () => console.log('Alphabetical')},
-        {label: 'Last updated', onClick: () => console.log('Last updated')},
-        {label: 'Rename list', onClick: () => console.log('Rename')},
+        {id: 1,label: 'Custom order', onClick: () => console.log('Custom order'), icon: swap },
+        {id: 2,label: 'Due date', onClick: () => console.log('Due date')},
+        {id: 3,label: 'Alphabetical', onClick: () => console.log('Alphabetical')},
+        {id: 4,label: 'Last updated', onClick: () => console.log('Last updated')},
+        {id: 5,label: 'Duplicate list', onClick: () => console.log('Duplicate'), icon: duplicate},
+        {id: 6,label: 'Rename list', onClick: () => console.log('Rename'), icon: edit},
+        {id: 7,label: 'Delete list', onClick: () => console.log('Delete'), icon: deletes},
         // Добавляйте остальные пункты меню по необходимости
     ];
 
