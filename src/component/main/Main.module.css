@@ -1,0 +1,92 @@
+.containerMain {
+    padding: 20px;
+}
+
+.containerSmile {
+    display: flex;
+    align-items: center; /* Выровнять элементы по центру вертикально */
+
+}
+
+.imgSmile {
+    opacity: 0; /* Изображение скрыто по умолчанию */
+    transition: opacity 0.7s ease; /* Плавное появление */
+    width: 24px; /* Установите размер иконки по необходимости */
+    height: auto;
+}
+
+.titleBoard {
+    color: #919090;
+    margin: 0;
+    cursor: pointer;
+}
+
+.titleBoard:hover + .imgSmile {
+    opacity: 1; /* Появление изображения при наведении */
+}
+
+.containerTask {
+    background-color: var(--bar-color);
+    padding: 15px 8px 10px 15px;
+    min-width: 250px;
+}
+
+.addTaskContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(95, 99, 104);
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.addTaskContainer:hover {
+    color: var(--hover-task-color);
+
+}
+
+.colorSpanTask {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+    cursor: pointer;
+
+}
+
+.titleTask {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+}
+
+.titleAndPoint {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.addIcon {
+    color: var(--primary-color);
+    border-radius: 50%; /* Скругление всегда активное */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавные изменения */
+    background-color: transparent; /* Фон по умолчанию */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+
+}
+
+.addTaskContainer:hover .addIcon {
+    color: var(--hover-task-color); /* Иконка становится синей */
+    background-color: var(--primary-color); /* Фон становится синим */
+    cursor: pointer;
+}
+
+.addTaskContainer:hover .colorSpanTask {
+    color: var(--primary-color); /* Текст "Add Task" становится синим */
+}

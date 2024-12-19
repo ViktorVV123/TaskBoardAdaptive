@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Menu.module.css';
-import add from '../../app/icons/add.svg'
 import board from '../../app/icons/board.svg'
+import {AddIcon} from "../../app/icons/AddIcon";
 
 type MenuProps = {
     openMenu: boolean;
@@ -17,8 +17,6 @@ export const Menu: React.FC<MenuProps> = ({openMenu, closeMenuHandler}) => {
     const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
     };
-
-
 
 
     return (
@@ -41,8 +39,10 @@ export const Menu: React.FC<MenuProps> = ({openMenu, closeMenuHandler}) => {
                             <img src={board} alt="board"/>
                             <p style={{marginLeft: 10}}>MainBoard</p>
                         </div>
-                        <div style={{display: 'flex'}}>
-                            <img src={add} alt="add"/>
+                        <div style={{display: 'flex', alignItems: 'center'}}>
+                            <div>
+                                <AddIcon color={'#000000'} width={'24'}/>
+                            </div>
                             <p style={{marginLeft: 10}}>AddBoard</p>
                         </div>
                     </div>
