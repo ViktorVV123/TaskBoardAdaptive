@@ -4,13 +4,14 @@ import smile from '../../app/icons/smileFirst.svg'
 import point from '../../app/icons/points.svg'
 import {taskType} from "../../App";
 import {AddIcon} from "../../app/icons/AddIcon";
-import {Dropdown} from "../dropList/Dropdown";
+
 import edit from '../../app/icons/edit.svg'
 import swap from '../../app/icons/swap_vert.svg'
 import deletes from '../../app/icons/delete.svg'
 import duplicate from '../../app/icons/dublicate.svg'
-
 import {v1} from "uuid";
+import {Dropdown} from "../dropList/DropdownProvider";
+
 
 type Props = {
     tasks: taskType[]
@@ -26,7 +27,7 @@ export const Main = ({tasks, setTasks}: Props) => {
     const [open, setOpen] = useState(false);
     const buttonRef = useRef<HTMLDivElement>(null);
 
-    const items = [
+    const dropdownItems = [
         {id: 1,label: 'Custom order', onClick: () => console.log('Custom order'), icon: swap },
         {id: 2,label: 'Due date', onClick: () => console.log('Due date')},
         {id: 3,label: 'Alphabetical', onClick: () => console.log('Alphabetical')},
@@ -52,14 +53,14 @@ export const Main = ({tasks, setTasks}: Props) => {
                             <div className={styles.titleTask}>
                                 {item.title}
                             </div>
-                            <div ref={buttonRef} onClick={() => setOpen(!open)} style={{cursor: 'pointer'}}>
-                                <img style={{cursor: 'pointer'}} src={point} alt="point"/>
-                            </div>
+
                             <Dropdown
-                                isOpen={open}
-                                onClose={() => setOpen(false)}
-                                items={items}
-                                anchorRef={buttonRef}
+                                top={-12}
+                                items={dropdownItems}
+                                trigger={<div style={{cursor: 'pointer'}}>
+                                    <img style={{cursor: 'pointer'}} src={point} alt="point"/>
+                                </div>}
+                                position="left"
                             />
                         </div>
                         <div className={styles.addTaskContainer}>

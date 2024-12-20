@@ -3,7 +3,7 @@ import './App.css';
 import axios from "axios";
 import {Header} from "./component/header/Header";
 import {Main} from "./component/main/Main";
-import {Modal} from "./component/modal/Modal";
+import {Dropdown} from "./component/dropList/DropdownProvider";
 
 export type taskType = {
     id: number;
@@ -36,11 +36,12 @@ function App() {
        fetchTasks();
      }, []);
 
+
+
     return (
         <div className="App">
             <Header/>
             <Main tasks={tasks} setTasks={setTasks}/>
-
 
         </div>
     );
