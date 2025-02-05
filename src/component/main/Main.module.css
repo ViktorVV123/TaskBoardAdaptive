@@ -29,7 +29,7 @@
     background-color: var(--bar-color);
     padding: 15px 8px 10px 15px;
     min-width: 250px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
 }
 
@@ -46,19 +46,22 @@
     color: var(--hover-task-color);
 
 }
-.containerMap{
+
+.containerMap {
     display: flex;
     gap: 10px;
     margin-top: 20px;
     border-radius: 20px;
 
 }
+
 .colorSpanTask {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 14px;
     font-weight: 400;
     letter-spacing: 0.15px;
     cursor: pointer;
+    color: black;
 
 }
 
@@ -85,6 +88,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    width: 24px;
 
 
 }
@@ -97,4 +101,26 @@
 
 .addTaskContainer:hover .colorSpanTask {
     color: var(--primary-color); /* Текст "Add Task" становится синим */
+}
+
+/*стили для добавленной таски */
+.openStyle {
+    display: flex;
+    align-items: start;
+
+    gap: 17px;
+}
+
+.containerInput {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.inputStyle {
+    outline: none;
+    border: none;
+}
+.inputStyle::placeholder {
+    color: #959494;
 }

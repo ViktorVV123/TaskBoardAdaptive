@@ -41,7 +41,7 @@ export const Menu: React.FC<MenuProps> = ({openMenu, closeMenuHandler}) => {
                         </div>
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <div>
-                                <AddIcon color={'#000000'} width={'24'}/>
+                                <AddIcon color={'#000000'} />
                             </div>
                             <p style={{marginLeft: 10}}>AddBoard</p>
                         </div>
