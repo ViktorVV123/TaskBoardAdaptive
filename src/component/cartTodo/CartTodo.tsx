@@ -14,45 +14,49 @@ import {AddNewCart} from "./AddNewCart";
 
 type CartTodoType = {
     item: typeAddNewBoard;
-    valueTitleHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    valueDetailsHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    addNewHandler: (boardId: string, title: string, details: string) => void;
+    addNewHandler: (boardId: string, title: string, details: string,completed:boolean) => void;
     dropdownItems: any;
     setChangeImage: (value: boolean) => void;
     changeImage: boolean;
-    valueTitle: string;
-    valueDetails: string;
     addNew: typeAddNew[];
-    setValueTitle: (value: string) => void;
-    setValueDetails: (value: string) => void;
     deleteNewBoardHandler: (id: string) => void;
+    toggleTaskCompleted: (taskId: string | number) => void;
 
 };
 
 export const CartTodo = ({
                              item,
-                             valueTitleHandler,
-                             valueDetailsHandler,
                              addNewHandler,
                              dropdownItems,
-
                              setChangeImage,
                              changeImage,
-                             valueTitle,
-                             valueDetails,
                              addNew,
-                             setValueTitle,
-                             setValueDetails,
+                             toggleTaskCompleted,
                              deleteNewBoardHandler
                          }: CartTodoType) => {
     const {id, title} = item;
 
+    const [valueTitle, setValueTitle] = useState('');
+    const [valueDetails, setValueDetails] = useState('');
+    const [completedTask, setCompletedTask] = useState(false);
+    const [open, setOpen] = useState(false);
+
+    const valueTitleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValueTitle(event.target.value);
+    };
+
+    const valueDetailsHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValueDetails(event.target.value);
+    };
+
     const addNewHandlerTwo = () => {
-        addNewHandler(id, valueTitle, valueDetails)
+        addNewHandler(id, valueTitle, valueDetails,completedTask)
         setValueTitle('')
         setValueDetails('')
+        setCompletedTask(false);
+        setOpen(false);
     }
-    const [open, setOpen] = useState(false);
+
     const openHandler = () => {
         setOpen(!open);
     };
@@ -81,6 +85,7 @@ export const CartTodo = ({
                     <div className={styles.colorSpanTask}>
                         Add Task
                     </div>
+
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: 20}}>
@@ -109,7 +114,7 @@ export const CartTodo = ({
                             </div>
                         </div>
                     )}
-                    <AddNewCart addNew={addNew} setChangeImage={setChangeImage} changeImage={changeImage}/>
+                    <AddNewCart toggleTaskCompleted={toggleTaskCompleted} addNew={addNew} setChangeImage={setChangeImage} />
                     <div
                         style={{
                             display: 'flex',

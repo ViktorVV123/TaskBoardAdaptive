@@ -21,16 +21,18 @@ export type typeAddNew = {
     description: string;
     status: string;
     boardId?: string;
+    completed?: boolean;
 };
 
 export type typeAddNewBoard = {
     id: string;
     title: string;
+
 };
 
 export const Main = () => {
     const [data, setData] = useState<typeAddNewBoard[]>([
-        {id: '1', title: 'My Tasks'}
+        {id: '1', title: 'My Tasks'},
     ]);
 
 
@@ -51,21 +53,12 @@ export const Main = () => {
 
     const [addNew, setAddNew] = useState<typeAddNew[]>([]);
 
-    const [valueTitle, setValueTitle] = useState('');
-    const [valueDetails, setValueDetails] = useState('');
 
-    const valueTitleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValueTitle(event.target.value);
-    };
-
-    const valueDetailsHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValueDetails(event.target.value);
-    };
 
 // Функция добавления новой задачи; вызывается из карточки с локальными значениями
-    const addNewHandler = (boardId: string, title: string, details: string) => {
+    const addNewHandler = (boardId: string, title: string, details: string,completed:boolean) => {
         if (title.trim() === '') return;
-        setAddNew([...addNew, { title, description: details, id: v1(), status: '', boardId }]);
+        setAddNew([...addNew, { title, description: details, id: v1(), status: '', boardId, completed:completed }]);
     };
 
 
@@ -77,6 +70,14 @@ export const Main = () => {
     // Удаление доски (карточки)
     const deleteNewBoardHandler = (id: string) => {
         setData(data.filter((elem) => elem.id !== id));
+    };
+// Функция переключения состояния completed для конкретной задачи
+    const toggleTaskCompleted = (taskId: string) => {
+        setAddNew(
+            addNew.map((task) =>
+                task.id === taskId ? { ...task, completed: !task.completed } : task
+            )
+        );
     };
 
 
@@ -92,18 +93,13 @@ export const Main = () => {
             <div style={{display: 'flex',gap:30, flexWrap: 'wrap'}}>
                 {data.map((item) => (
                     <CartTodo
-                        setValueDetails={setValueDetails}
-                        setValueTitle={setValueTitle}
+                        toggleTaskCompleted={toggleTaskCompleted}
                         key={item.id}
                         changeImage={changeImage}
                         setChangeImage={setChangeImage}
                         item={item}
-                        valueTitleHandler={valueTitleHandler}
                         dropdownItems={dropdownItems}
-                        valueDetailsHandler={valueDetailsHandler}
                         addNewHandler={addNewHandler}
-                        valueTitle={valueTitle}
-                        valueDetails={valueDetails}
                         addNew={addNew.filter((task) => task.boardId === item.id)}
                         deleteNewBoardHandler={deleteNewBoardHandler}
                     />

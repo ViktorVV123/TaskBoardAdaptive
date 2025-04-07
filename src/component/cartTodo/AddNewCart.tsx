@@ -6,10 +6,10 @@ import { typeAddNew } from "../main/Main";
 type AddNewCartProps = {
     addNew: typeAddNew[];
     setChangeImage: (value: boolean) => void;
-    changeImage: boolean;
+    toggleTaskCompleted: (taskId: string | number) => void;
 };
 
-export const AddNewCart = ({ addNew, setChangeImage, changeImage }: AddNewCartProps) => {
+export const AddNewCart = ({ addNew, setChangeImage,toggleTaskCompleted }: AddNewCartProps) => {
     return (
         <div>
             {addNew.map((item: typeAddNew) => (
@@ -26,8 +26,8 @@ export const AddNewCart = ({ addNew, setChangeImage, changeImage }: AddNewCartPr
                         }}
                     >
                         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-                            <div onMouseEnter={() => setChangeImage(true)} onMouseLeave={() => setChangeImage(false)}>
-                                {changeImage ? <Check color="currentColor" /> : <Cicle />}
+                            <div onClick={() => toggleTaskCompleted(item.id)} onMouseEnter={() => setChangeImage(true)} onMouseLeave={() => setChangeImage(false)}>
+                                {item.completed ? <Check color="currentColor" /> : <Cicle />}
                             </div>
                             {item.title}
                         </div>
