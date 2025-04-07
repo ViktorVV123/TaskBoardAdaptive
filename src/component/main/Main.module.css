@@ -6,6 +6,7 @@
     display: flex;
     align-items: center; /* Выровнять элементы по центру вертикально */
 
+
 }
 
 .imgSmile {
@@ -18,11 +19,11 @@
 .titleBoard {
     color: #919090;
     margin: 0;
-    cursor: pointer;
 }
+.titleBoard:hover {
+    color: #232323;
+    cursor: pointer;
 
-.titleBoard:hover + .imgSmile {
-    opacity: 1; /* Появление изображения при наведении */
 }
 
 .containerTask {
@@ -50,13 +51,14 @@
 .containerMap {
     display: flex;
     gap: 10px;
+    align-items: flex-start;
     margin-top: 20px;
     border-radius: 20px;
 
 }
 
 .colorSpanTask {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 14px;
     font-weight: 400;
     letter-spacing: 0.15px;
@@ -117,10 +119,19 @@
     gap: 10px
 }
 
-.inputStyle {
+.inputTitleStyle {
     outline: none;
     border: none;
+    font-size: 14px;
+    font-weight: 500;
 }
+.inputDetailsStyle {
+    outline: none;
+    border: none;
+    font-size: 12px;
+
+}
+
 .inputStyle::placeholder {
     color: #959494;
 }
