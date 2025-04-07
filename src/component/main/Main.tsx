@@ -72,7 +72,7 @@ export const Main = () => {
         setData(data.filter((elem) => elem.id !== id));
     };
 // Функция переключения состояния completed для конкретной задачи
-    const toggleTaskCompleted = (taskId: string) => {
+    const toggleTaskCompleted = (taskId: string | number) => {
         setAddNew(
             addNew.map((task) =>
                 task.id === taskId ? { ...task, completed: !task.completed } : task
