@@ -47,14 +47,14 @@ export const Header = () => {
                 <div className={styles.iconTrio}>
                     <img src={theme} alt="theme"/>
                     <img src={vertical} alt="vertical"/>
-                    <Dropdown
+                   {/* <Dropdown
                         items={items}
                         top={60}
                         trigger={<div style={{cursor: 'pointer'}}>
                             <img style={{cursor: 'pointer'}} src={sittings} alt="settings"/>
                         </div>}
                         position="right"
-                    />
+                    />*/}
                 </div>
                 <div>
                     <img src={account} alt="account"/>

@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './DropdownProvider.module.css';
+import swap from "../../app/icons/swap_vert.svg";
+import duplicate from "../../app/icons/dublicate.svg";
+import edit from "../../app/icons/edit.svg";
+import deletes from "../../app/icons/delete.svg";
 
 type DropdownItem = {
     label: string;
@@ -10,16 +14,19 @@ type DropdownItem = {
 };
 
 type DropdownProps = {
-    items: DropdownItem[];
+
     trigger: React.ReactNode;
     position?: 'left' | 'right';
     top: number;
+    setIsEditing: (isOpen: boolean) => void;
+    deleteNewBoardHandler:(id: string) => void;
+    boardId: string; // передаём идентификатор доски, которую нужно удалить
+    duplicateBoardHandler:(id: string) => void;
 };
 
-export const Dropdown: React.FC<DropdownProps> = ({ items, top,  trigger, position = 'left' }) => {
+export const Dropdown: React.FC<DropdownProps> = ({duplicateBoardHandler,top,boardId,deleteNewBoardHandler,setIsEditing, trigger, position = 'left' }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-
 
     const toggleDropdown = () => {
         setIsOpen((prev) => !prev);
@@ -49,31 +56,53 @@ export const Dropdown: React.FC<DropdownProps> = ({ items, top,  trigger, positi
             </div>
             {isOpen && (
                 <div
-                    style={{top}}
+                    style={{ top }}
                     className={`${styles.dropdownMenu} ${
                         position === 'left' ? styles.dropdownMenuLeft : styles.dropdownMenuRight
                     }`}
                 >
-                    {items.map((item, index) => {
-                        if (item.isDivider) {
-                            return <div key={index} className={styles.dropdownDivider}></div>;
-                        }
-                        if (item.isHeader) {
-                            return (
-                                <div key={index} className={styles.dropdownHeader}>
-                                    {item.label}
-                                </div>
-                            );
-                        }
-                        return (
-                            <div key={index} onClick={item.onClick} className={styles.dropdownItem}>
-                                {item.icon && (
-                                    <img src={item.icon} alt="icon" style={{ width: 16, height: 16 }} />
-                                )}
-                                <div className={styles.dropdownLabel}>{item.label}</div>
-                            </div>
-                        );
-                    })}
+                    {/* Для каждого элемента устанавливаем onClick, который выполняет действие и закрывает меню */}
+                    <div
+                        className={styles.dropdownItem}
+                        onClick={() => {
+                            console.log('Custom order');
+                            closeDropdown();
+                        }}
+                    >
+                        <img src={swap} alt="swap"/>
+                        <div>Custom order</div>
+                    </div>
+                    <div
+                        className={styles.dropdownItem}
+                        onClick={() => {
+                            duplicateBoardHandler(boardId);
+                            setIsOpen(false);
+                        }}
+                    >
+                        <img src={duplicate} alt="duplicate"/>
+                        <div>Duplicate</div>
+                    </div>
+                    <div
+                        className={styles.dropdownItem}
+                        onClick={() => {
+                            setIsEditing(true);
+                            setIsOpen(false);
+                        }}
+                    >
+                        <img src={edit} alt="edit"/>
+                        <div>Rename list</div>
+
+                    </div>
+                    <div
+                        className={styles.dropdownItem}
+                        onClick={() => {
+                            deleteNewBoardHandler(boardId);
+                            setIsOpen(false);
+                        }}
+                    >
+                        <img src={deletes} alt="deletes"/>
+                        <div >Delete list</div>
+                    </div>
                 </div>
             )}
         </div>

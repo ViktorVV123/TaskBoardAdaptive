@@ -11,24 +11,28 @@ import {Attach} from "../../app/icons/Attach";
 import {Send} from "../../app/icons/Send";
 import {typeAddNew, typeAddNewBoard} from "../main/Main";
 import {AddNewCart} from "./AddNewCart";
+import swap from "../../app/icons/swap_vert.svg";
+import duplicate from "../../app/icons/dublicate.svg";
+import edit from "../../app/icons/edit.svg";
+import deletes from "../../app/icons/delete.svg";
 
 type CartTodoType = {
     item: typeAddNewBoard;
-    addNewHandler: (boardId: string, title: string, details: string,completed:boolean) => void;
-    dropdownItems: any;
+    addNewHandler: (boardId: string, title: string, details: string, completed: boolean) => void;
     setChangeImage: (value: boolean) => void;
     changeImage: boolean;
     addNew: typeAddNew[];
     deleteNewBoardHandler: (id: string) => void;
     toggleTaskCompleted: (taskId: string | number) => void;
-    updateBoardTitle: (boardId: string, title: string) =>void
+    updateBoardTitle: (boardId: string, title: string) => void
+    duplicateBoardHandler: (boardId: string) => void;
 
 };
 
 export const CartTodo = ({
                              item,
                              addNewHandler,
-                             dropdownItems,
+                             duplicateBoardHandler,
                              setChangeImage,
                              changeImage,
                              addNew,
@@ -54,7 +58,7 @@ export const CartTodo = ({
     };
 
     const addNewHandlerTwo = () => {
-        addNewHandler(id, valueTitle, valueDetails,completedTask)
+        addNewHandler(id, valueTitle, valueDetails, completedTask)
         setValueTitle('')
         setValueDetails('')
         setCompletedTask(false);
@@ -75,16 +79,33 @@ export const CartTodo = ({
         <div className={styles.containerMap}>
             <div key={id} className={styles.containerTask}>
                 <div className={styles.titleAndPoint}>
-                    <div className={styles.titleTask}>{title}</div>
-                    <Dropdown
-                        top={-12}
-                        items={dropdownItems}
-                        trigger={
-                            <div style={{cursor: 'pointer'}}>
-                                <img style={{cursor: 'pointer'}} src={point} alt="point"/>
-                            </div>
-                        }
-                        position="left"
+                    {isEditing ? (
+                        <input
+                            value={editTitleBoard}
+                            onChange={(e) => setEditTitleBoard(e.target.value)}
+                            onBlur={finishEditing}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') finishEditing();
+                            }}
+                            autoFocus
+                            className={styles.editTitleInput}
+                        />
+                    ) : (
+                        <div className={styles.titleTask} onClick={() => setIsEditing(true)}>
+                            {title}
+                        </div>
+                    )}
+                    <Dropdown boardId={id}
+                              top={-12}
+                              setIsEditing={setIsEditing}
+                              duplicateBoardHandler={duplicateBoardHandler}
+                              deleteNewBoardHandler={deleteNewBoardHandler}
+                              trigger={
+                                  <div style={{cursor: 'pointer'}}>
+                                      <img style={{cursor: 'pointer'}} src={point} alt="point"/>
+                                  </div>
+                              }
+                              position="left"
                     />
                 </div>
                 <div onClick={openHandler} className={styles.addTaskContainer}>
@@ -124,7 +145,8 @@ export const CartTodo = ({
                             </div>
                         </div>
                     )}
-                    <AddNewCart toggleTaskCompleted={toggleTaskCompleted} addNew={addNew} setChangeImage={setChangeImage} />
+                    <AddNewCart toggleTaskCompleted={toggleTaskCompleted} addNew={addNew}
+                                setChangeImage={setChangeImage}/>
                     <div
                         style={{
                             display: 'flex',
