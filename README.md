@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+# ToDoBoard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**ToDoBoard** — это адаптивное приложение для управления задачами, реализованное с использованием React и TypeScript. Проект демонстрирует современные подходы в разработке фронтенд-приложений, включая:
 
-## Available Scripts
+- Управление досками (boards) и задачами (cards) с независимым состоянием;
+- Возможность редактирования названий досок после их создания;
+- Добавление, изменение и удаление задач;
+- Переключение статуса задачи с использованием интуитивных иконок (Check / Cicle);
+- Реализацию функциональности перетаскивания карточек (drag-and-drop) для удобного изменения порядка задач.
+- Возможность менять со светлой на темную тему
 
-In the project directory, you can run:
+## Особенности проекта
 
-### `npm start`
+- **Создание и управление досками:**  
+  Пользователь может добавлять новые доски, редактировать их названия после создания и удалять их. Название доски можно изменять путём клика по нему, после чего оно превращается в поле ввода, позволяющее задать новое значение.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Работа с задачами:**  
+  В каждой доске можно добавлять задачи с заголовком и подробным описанием. Каждая задача имеет иконку, показывающую её состояние (выполнена или нет). При нажатии на иконку состояние переключается – от неподтверждённого (иконка Cicle) к подтверждённому (иконка Check) и наоборот.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Перетаскивание карточек:**  
+  Реализована функциональность drag-and-drop, позволяющая изменять порядок задач внутри доски. В будущем планируется расширить функционал перетаскивания для поддержки перемещения задач между досками.
 
-### `npm test`
+- **Адаптивный дизайн:**  
+  Приложение оптимизировано для работы на различных устройствах, обеспечивая удобное управление задачами и досками на мобильных и десктопных платформах.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Стек технологий
 
-### `npm run build`
+- **React** – библиотека для создания динамичных пользовательских интерфейсов.
+- **TypeScript** – обеспечивает статическую типизацию, что повышает надежность и качество кода.
+- **CSS Modules** – для модульных и изолированных стилей.
+- **Git & GitHub** – для контроля версий и совместной разработки.
+- **Библиотека Drag-and-Drop** – (например, [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) или [react-dnd](https://react-dnd.github.io/react-dnd/about)) для реализации перетаскивания карточек.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Структура проекта
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Main:**  
+  Главный компонент, который управляет списком досок и глобальными задачами, а также содержит функции для добавления, удаления и обновления досок и задач.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **CartTodo:**  
+  Компонент, отвечающий за отображение отдельной доски. Внутри каждой доски реализована форма для добавления новых задач, редактирования названия доски и управления локальным состоянием задач.
 
-### `npm run eject`
+- **AddNewCart:**  
+  Компонент для отображения списка задач, принадлежащих конкретной доске. Позволяет переключать состояние задачи (completed) посредством клика по иконке.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
