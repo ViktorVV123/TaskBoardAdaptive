@@ -21,6 +21,7 @@ type CartTodoType = {
     addNew: typeAddNew[];
     deleteNewBoardHandler: (id: string) => void;
     toggleTaskCompleted: (taskId: string | number) => void;
+    updateBoardTitle: (boardId: string, title: string) =>void
 
 };
 
@@ -32,7 +33,8 @@ export const CartTodo = ({
                              changeImage,
                              addNew,
                              toggleTaskCompleted,
-                             deleteNewBoardHandler
+                             deleteNewBoardHandler,
+                             updateBoardTitle
                          }: CartTodoType) => {
     const {id, title} = item;
 
@@ -40,6 +42,8 @@ export const CartTodo = ({
     const [valueDetails, setValueDetails] = useState('');
     const [completedTask, setCompletedTask] = useState(false);
     const [open, setOpen] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editTitleBoard, setEditTitleBoard] = useState(title);
 
     const valueTitleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueTitle(event.target.value);
@@ -59,6 +63,12 @@ export const CartTodo = ({
 
     const openHandler = () => {
         setOpen(!open);
+    };
+
+    // Функция завершения редактирования названия доски
+    const finishEditing = () => {
+        updateBoardTitle(id, editTitleBoard);
+        setIsEditing(false);
     };
 
     return (

@@ -8,12 +8,7 @@ import deletes from '../../app/icons/delete.svg';
 import duplicate from '../../app/icons/dublicate.svg';
 import {v1} from "uuid";
 import {CartTodo} from "../cartTodo/CartTodo";
-import {Cicle} from "../../app/icons/Cicle";
-import {Check} from "../../app/icons/Check";
-import {Attach} from "../../app/icons/Attach";
-import {Calendar} from "../../app/icons/Calendar";
-import {Send} from "../../app/icons/Send";
-import {LabelIcon} from "../../app/icons/LabelIcon";
+
 
 export type typeAddNew = {
     id: string | number;
@@ -80,6 +75,11 @@ export const Main = () => {
         );
     };
 
+    // Функция обновления названия доски
+    const updateBoardTitle = (boardId: string, newTitle:string) => {
+        setData(data.map(element => element.id === boardId ? {...element, title:newTitle}: element));
+    }
+
 
     return (
         <div className={styles.containerMain}>
@@ -93,6 +93,7 @@ export const Main = () => {
             <div style={{display: 'flex',gap:30, flexWrap: 'wrap'}}>
                 {data.map((item) => (
                     <CartTodo
+                        updateBoardTitle={updateBoardTitle}
                         toggleTaskCompleted={toggleTaskCompleted}
                         key={item.id}
                         changeImage={changeImage}
