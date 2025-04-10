@@ -28,20 +28,26 @@ export const Main = () => {
         {id: '1', title: 'My Tasks'},
     ]);
 
-
     const [changeImage, setChangeImage] = useState(false);
     const [addNew, setAddNew] = useState<typeAddNew[]>([]);
+    const [searchTerm, setSearchTerm] = useState('');
+
+
+    // Фильтрация досок по поисковому запросу (по заголовку)
+    const filteredData = data.filter(board =>
+        board.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
 // Функция добавления новой задачи; вызывается из карточки с локальными значениями
-    const addNewHandler = (boardId: string, title: string, details: string,completed:boolean) => {
+    const addNewHandler = (boardId: string, title: string, details: string, completed: boolean) => {
         if (title.trim() === '') return;
-        setAddNew([...addNew, { title, description: details, id: v1(), status: '', boardId, completed:completed }]);
+        setAddNew([...addNew, {title, description: details, id: v1(), status: '', boardId, completed: completed}]);
     };
 
 
     // Добавление новой доски по клику на заголовок
     const addNewBoardHandler = () => {
-        setData([...data, { id: v1(), title: 'New Board' }]);
+        setData([...data, {id: v1(), title: 'New Board'}]);
     };
 
     // Удаление доски (карточки)
@@ -52,14 +58,14 @@ export const Main = () => {
     const toggleTaskCompleted = (taskId: string | number) => {
         setAddNew(
             addNew.map((task) =>
-                task.id === taskId ? { ...task, completed: !task.completed } : task
+                task.id === taskId ? {...task, completed: !task.completed} : task
             )
         );
     };
 
     // Функция обновления названия доски
-    const updateBoardTitle = (boardId: string, newTitle:string) => {
-        setData(data.map(element => element.id === boardId ? {...element, title:newTitle}: element));
+    const updateBoardTitle = (boardId: string, newTitle: string) => {
+        setData(data.map(element => element.id === boardId ? {...element, title: newTitle} : element));
     }
 
     const duplicateBoardHandler = (boardId: string) => {
@@ -79,29 +85,32 @@ export const Main = () => {
     }
 
     return (
-        <div className={styles.containerMain}>
-            <div className={styles.containerSmile}>
-                <h3 onClick={addNewBoardHandler} className={styles.titleBoard}>Main Board</h3>
-                <div>
-                    <AddIcon color={'currentColor'} width={'20'}/>
+        <div>
+            <Header searchTerm={searchTerm}  setSearchTerm={setSearchTerm} />
+            <div className={styles.containerMain}>
+                <div className={styles.containerSmile}>
+                    <h3 onClick={addNewBoardHandler} className={styles.titleBoard}>Main Board</h3>
+                    <div>
+                        <AddIcon color={'currentColor'} width={'20'}/>
+                    </div>
+                    <img className={styles.imgSmile} src={smile} alt="Smile"/>
                 </div>
-                <img className={styles.imgSmile} src={smile} alt="Smile"/>
-            </div>
-            <div style={{display: 'flex',gap:30, flexWrap: 'wrap'}}>
-                {data.map((item) => (
-                    <CartTodo
-                        duplicateBoardHandler={duplicateBoardHandler}
-                        updateBoardTitle={updateBoardTitle}
-                        toggleTaskCompleted={toggleTaskCompleted}
-                        key={item.id}
-                        changeImage={changeImage}
-                        setChangeImage={setChangeImage}
-                        item={item}
-                        addNewHandler={addNewHandler}
-                        addNew={addNew.filter((task) => task.boardId === item.id)}
-                        deleteNewBoardHandler={deleteNewBoardHandler}
-                    />
-                ))}
+                <div className={styles.scrollManyCart} style={{display: 'flex', gap: 30}}>
+                    {filteredData.map((item) => (
+                        <CartTodo
+                            duplicateBoardHandler={duplicateBoardHandler}
+                            updateBoardTitle={updateBoardTitle}
+                            toggleTaskCompleted={toggleTaskCompleted}
+                            key={item.id}
+                            changeImage={changeImage}
+                            setChangeImage={setChangeImage}
+                            item={item}
+                            addNewHandler={addNewHandler}
+                            addNew={addNew.filter((task) => task.boardId === item.id)}
+                            deleteNewBoardHandler={deleteNewBoardHandler}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );

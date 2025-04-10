@@ -10,11 +10,8 @@ import {LabelIcon} from "../../app/icons/LabelIcon";
 import {Attach} from "../../app/icons/Attach";
 import {Send} from "../../app/icons/Send";
 import {typeAddNew, typeAddNewBoard} from "../main/Main";
-import {AddNewCart} from "./AddNewCart";
-import swap from "../../app/icons/swap_vert.svg";
-import duplicate from "../../app/icons/dublicate.svg";
-import edit from "../../app/icons/edit.svg";
-import deletes from "../../app/icons/delete.svg";
+import {AddNewCart} from "./taskCart/AddNewCart";
+
 
 type CartTodoType = {
     item: typeAddNewBoard;
@@ -27,6 +24,7 @@ type CartTodoType = {
     updateBoardTitle: (boardId: string, title: string) => void
     duplicateBoardHandler: (boardId: string) => void;
 
+
 };
 
 export const CartTodo = ({
@@ -38,7 +36,8 @@ export const CartTodo = ({
                              addNew,
                              toggleTaskCompleted,
                              deleteNewBoardHandler,
-                             updateBoardTitle
+                             updateBoardTitle,
+
                          }: CartTodoType) => {
     const {id, title} = item;
 
@@ -75,6 +74,8 @@ export const CartTodo = ({
         setIsEditing(false);
     };
 
+
+
     return (
         <div className={styles.containerMap}>
             <div key={id} className={styles.containerTask}>
@@ -94,6 +95,7 @@ export const CartTodo = ({
                         <div className={styles.titleTask} onClick={() => setIsEditing(true)}>
                             {title}
                         </div>
+
                     )}
                     <Dropdown boardId={id}
                               top={-12}
@@ -117,58 +119,52 @@ export const CartTodo = ({
                         Add Task
                     </div>
 
+
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: 20}}>
                     {open && (
-                        <div className={styles.openStyle}>
-                            <div
-                                className={`${styles.addIcon} addIcon`}
-                                onMouseEnter={() => setChangeImage(true)}
-                                onMouseLeave={() => setChangeImage(false)}
-                            >
-                                {changeImage ? <Check color={'currentColor'}/> : <Cicle/>}
+
+                        <div style={{display: 'flex', flexDirection: 'column',gap:20}}>
+                            <div className={styles.openStyle}>
+                                <div
+                                    className={`${styles.addIcon} addIcon`}
+                                    onMouseEnter={() => setChangeImage(true)}
+                                    onMouseLeave={() => setChangeImage(false)}
+                                >
+                                    {changeImage ? <Check color={'currentColor'}/> : <Cicle/>}
+                                </div>
+                                <div className={styles.containerInput}>
+                                    <input
+                                        className={styles.inputTitleStyle}
+                                        value={valueTitle}
+                                        onChange={valueTitleHandler}
+                                        placeholder={'Title'}
+                                    />
+                                    <input
+                                        className={styles.inputDetailsStyle}
+                                        value={valueDetails}
+                                        onChange={valueDetailsHandler}
+                                        placeholder={'Details'}
+                                    />
+                                </div>
                             </div>
-                            <div className={styles.containerInput}>
-                                <input
-                                    className={styles.inputTitleStyle}
-                                    value={valueTitle}
-                                    onChange={valueTitleHandler}
-                                    placeholder={'Title'}
-                                />
-                                <input
-                                    className={styles.inputDetailsStyle}
-                                    value={valueDetails}
-                                    onChange={valueDetailsHandler}
-                                    placeholder={'Details'}
-                                />
+                            <div style={{width:'80%', display: 'flex', justifyContent: 'center', gap:10}}>
+                                <Calendar/>
+                                <LabelIcon/>
+                                <Attach/>
+                                <div style={{display: 'flex', alignItems: 'center', height: 20}}>
+                                    {valueTitle.length !== 0 && (
+                                        <div style={{width: '20%'}} onClick={addNewHandlerTwo}>
+                                            <Send/>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     )}
-                    <AddNewCart toggleTaskCompleted={toggleTaskCompleted} addNew={addNew}
+                    <AddNewCart  toggleTaskCompleted={toggleTaskCompleted} addNew={addNew}
                                 setChangeImage={setChangeImage}/>
-                    <div
-                        style={{
-                            display: 'flex',
-                            width: '100%',
-                            gap: 20,
-                            justifyContent: 'flex-start',
-                            height: 20,
-                            alignItems: 'center',
-                            marginLeft: 40,
-                        }}
-                    >
-                        <Calendar/>
-                        <LabelIcon/>
-                        <Attach/>
-                        <div style={{display: 'flex', alignItems: 'center', height: 20}}>
-                            {valueTitle.length !== 0 && (
-                                <div style={{width: '20%'}} onClick={addNewHandlerTwo}>
-                                    <Send/>
-                                </div>
-                            )}
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,16 @@
+
+
+.cartTask:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.iconWrapper {
+    width: 35px;
+    flex-shrink: 0;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

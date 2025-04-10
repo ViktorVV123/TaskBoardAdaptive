@@ -1,5 +1,5 @@
 .containerMain {
-    padding: 20px;
+padding: 0 20px 0 20px;
 }
 
 .containerSmile {
@@ -55,6 +55,7 @@
     margin-top: 20px;
     border-radius: 20px;
 
+
 }
 
 .colorSpanTask {
@@ -109,7 +110,6 @@
 .openStyle {
     display: flex;
     align-items: start;
-
     gap: 17px;
 }
 
@@ -135,3 +135,29 @@
 .inputStyle::placeholder {
     color: #959494;
 }
+
+
+.scrollManyCart {
+    width: 100%;
+    height: calc(100vh - 88px); /* 150px — высота header и любых дополнительных элементов */
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    font-size: 14px;
+}
+/*
+!* Кастомный скролл для WebKit (Chrome, Safari, Edge) *!
+.scrollManyCart::-webkit-scrollbar {
+    height: 5px; !* Высота скроллбара *!
+}
+
+.scrollManyCart::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+
+.scrollManyCart::-webkit-scrollbar-track {
+    background: #3a3a3a !important;
+}
+*/
