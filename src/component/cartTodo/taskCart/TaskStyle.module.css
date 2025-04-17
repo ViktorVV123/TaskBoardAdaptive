@@ -4,23 +4,75 @@
     /* остальной код без изменений */
 
 }
+/* TaskStyle.module.css */
 .cartTask {
+    position: relative;    /* важно для абсолютного календаря */
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 260px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    /* Убираем внешние margin, если они мешают */
-    margin: 0 -8px 0 -15px;   /* Вычитаем паддинги родителя */
-    padding: 10px 15px 10px 18px; /* Чтобы вернуть внутренние отступы */
+    margin: 0 -8px 0 -15px;
+    padding: 10px 15px 10px 18px;
 }
-.cartTask:hover {
+.cartTask:hover,
+.active {
     background-color: rgba(243, 243, 243, 0.76);
 }
+
+.completedHeader {
+    /* ваши стили для заголовка */
+}
+
+/* Обёртка иконки + dropdown */
+.calendarWrapper {
+    position: relative;
+}
+
+/* сам выпадающий блок */
+.calendarDropdown {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 8px;
+    z-index: 10;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* прокачанный базовый стиль для react-datepicker */
+.customDatePicker {
+    border: none;
+    border-radius: 8px;
+    /* чтобы убрать дефолтный бордер */
+}
+
+/* дополнительные точечные поправки */
+.customDatePicker .react-datepicker__header {
+    background: #f5f5f5;
+    border-bottom: none;
+}
+.customDatePicker .react-datepicker__current-month {
+    font-size: 1rem;
+    color: #333;
+}
+.customDatePicker .react-datepicker__day--selected {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+}
+
+
+.completedHeader {
+    /* ваши стили для заголовка Completed */
+}
+
 .taskTitle {
     font-size: 14px;
     font-weight: 500;
+    width: 100%;
     /* Убедитесь, что здесь нет лишних margin */
     margin: 0;
 }
@@ -37,5 +89,11 @@
     font-weight: 500;
     text-overflow: ellipsis;
     color:grey
+}
+.textContent{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
 

@@ -37,7 +37,9 @@ export const Main = () => {
     const filteredData = data.filter(board =>
         board.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
+    const deleteTask = (id:any) => {
+        setAddNew(addNew.filter((el) => el.id !== id));
+    }
 // Функция добавления новой задачи; вызывается из карточки с локальными значениями
     const addNewHandler = (boardId: string, title: string, details: string, completed: boolean) => {
         if (title.trim() === '') return;
@@ -89,15 +91,15 @@ export const Main = () => {
             <Header searchTerm={searchTerm}  setSearchTerm={setSearchTerm} />
             <div className={styles.containerMain}>
                 <div className={styles.containerSmile}>
-                    <h3 onClick={addNewBoardHandler} className={styles.titleBoard}>Main Board</h3>
+                    <h3 onClick={addNewBoardHandler} className={styles.titleBoard}>Board Add</h3>
                     <div>
                         <AddIcon color={'currentColor'} width={'20'}/>
                     </div>
-                    <img className={styles.imgSmile} src={smile} alt="Smile"/>
                 </div>
                 <div className={styles.scrollManyCart} style={{display: 'flex', gap: 30}}>
                     {filteredData.map((item) => (
                         <CartTodo
+                            deleteTask={deleteTask}
                             duplicateBoardHandler={duplicateBoardHandler}
                             updateBoardTitle={updateBoardTitle}
                             toggleTaskCompleted={toggleTaskCompleted}

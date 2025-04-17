@@ -23,6 +23,7 @@ type CartTodoType = {
     toggleTaskCompleted: (taskId: string | number) => void;
     updateBoardTitle: (boardId: string, title: string) => void
     duplicateBoardHandler: (boardId: string) => void;
+    deleteTask: (id: any) => void;
 
 
 };
@@ -37,6 +38,7 @@ export const CartTodo = ({
                              toggleTaskCompleted,
                              deleteNewBoardHandler,
                              updateBoardTitle,
+                             deleteTask
 
                          }: CartTodoType) => {
     const {id, title} = item;
@@ -47,6 +49,7 @@ export const CartTodo = ({
     const [open, setOpen] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editTitleBoard, setEditTitleBoard] = useState(title);
+    const [dropIconId, setDropIconId] = useState<string | number | null>(null);
 
     const valueTitleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueTitle(event.target.value);
@@ -66,6 +69,7 @@ export const CartTodo = ({
 
     const openHandler = () => {
         setOpen(!open);
+        setDropIconId(null)
     };
 
     // Функция завершения редактирования названия доски
@@ -149,7 +153,7 @@ export const CartTodo = ({
                                     />
                                 </div>
                             </div>
-                            <div style={{width:'80%', display: 'flex', justifyContent: 'center', gap:10}}>
+                            <div style={{width:'80%', display: 'flex', justifyContent: 'flex-start', gap:10, marginLeft:35}}>
                                 <Calendar/>
                                 <LabelIcon/>
                                 <Attach/>
@@ -163,7 +167,7 @@ export const CartTodo = ({
                             </div>
                         </div>
                     )}
-                    <AddNewCart  toggleTaskCompleted={toggleTaskCompleted} addNew={addNew}
+                    <AddNewCart setOpen={setOpen} dropIconId={dropIconId} setDropIconId={setDropIconId} deleteTask={deleteTask} toggleTaskCompleted={toggleTaskCompleted} addNew={addNew}
                                 setChangeImage={setChangeImage}/>
                 </div>
             </div>
